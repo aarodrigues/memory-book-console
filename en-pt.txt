@@ -1,4 +1,8 @@
- 
-ball: bola
-ball: bola
-magazine: revista
+red: vermelho
+branco: white
+carrot: cenoura
+juice: suco
+potato: batata
+garden: jardim
+book: livro
+man: homem
