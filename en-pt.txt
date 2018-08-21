@@ -1,0 +1,4 @@
+ 
+ball: bola
+ball: bola
+magazine: revista
