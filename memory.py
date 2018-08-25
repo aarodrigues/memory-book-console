@@ -1,6 +1,9 @@
 import random
 
 list = []
+enpt_txt = "en-pt.txt"
+pten_txt = "pt-en.txt"
+hits = mistakes = 0
 
 #read file
 def read_file(path, action):
@@ -13,11 +16,13 @@ def menu():
     print("\nMemory Book Application\n")
     choice = 1
     while choice != 0:
-        choice = input("Digite 1 to register a new word or Digite 2 to traning with registered words: ")
+        choice = input("Digite 1 to register a new word, Digite 2 to traning with registered words or Digite 3 to list saved words: ")
         if choice == "1":
             menu_cad()
         if choice == "2":
             menu_training()
+        if choice == "3":
+            list_words()
         if choice == "0":
             print("Exit!")
             exit()
@@ -52,13 +57,16 @@ def menu_training():
     while userInput != 0:
         line = get_random_element()
         word = line.split(" ",1)[0]
+        print("\nHits: "+str(hits)+" Mistakes: "+str(mistakes)+"\n")
         userInput = input(word+ " ")
         answer = line.split(" ",1)[-1].strip()
         if userInput.strip() == answer:
+            point_count(1)
             print("Right, Congradulations!")
-        elif userInput.strip() == " ":
+        elif userInput.strip() == "0":
             break
         else:
+            point_count(-1)
             print("Wrong, try again")
                 
 #register word
@@ -97,6 +105,26 @@ def get_list(fileName):
 #get random line from list
 def get_random_element():
     return random.choice(list)
+
+def list_words():
+    wordType = input("Do you want to list portuguese/english words (Digite 1) or english/portuguese words (Digite 2):")
+    fileName = ""
+    if wordType == "1":
+        fileName = pten_txt
+    if wordType == "2":
+        fileName = enpt_txt
+    get_list(fileName)
+    for word in list:
+        print("=> "+word)
+
+def point_count(num):
+    if num > 0:
+       global hits 
+       hits += num
+    if num < 0:
+       global mistakes 
+       mistakes += (-1)*num
+
 
 
 #entry point
