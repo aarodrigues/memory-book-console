@@ -6,3 +6,4 @@ potato: batata
 garden: jardim
 book: livro
 man: homem
+sun: sol
