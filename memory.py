@@ -56,74 +56,46 @@ def menu_training():
     userInput = 1
     while userInput != 0:
         line = get_random_element()
-        word = line.split(" ",1)[0]
-        print("\nHits: "+str(hits)+" Mistakes: "+str(mistakes)+"\n")
-        userInput = input(word+ " ")
-        answer = line.split(" ",1)[-1].strip()
-        if userInput.strip() == answer:
-            point_count(1)
-            print("Right, Congradulations!")
-        elif userInput.strip() == "0":
-            break
+        if line != "":
+            word = line.split(" ",1)[0]
+            print("\nHits: "+str(hits)+" Mistakes: "+str(mistakes)+"\n")
+            userInput = input(word+ " ")
+            answer = line.split(" ",1)[-1].strip()
+            if userInput.strip() == answer:
+                point_count(1)
+                print("Right, Congradulations!")
+            elif userInput.strip() == "0":
+                break
+            else:
+                point_count(-1)
+                print("Wrong, try again")
         else:
-            point_count(-1)
-            print("Wrong, try again")
+            break
                 
 #register word
 def cad_word(fileName, language):
-    word = ""
-    while word != "0":
-        word = input("Digite the "+language+" word: ")
-        if not exist(fileName,word):
-            if(word != "0"):
-                translation = input("Digite translation: ")
-                file = read_file(fileName, "a")
-                file.write(word+": "+translation+"\n")
-                file.close()
-        else:
-            print("Word already exist! Please try again")
+    print("Function cad_word need to be implemented")
 
 #find ocurrence
 def exist(fileName,word):
-    with open(fileName) as fp:
-        line = fp.readline()
-        while line:
-            if(word == line.strip().split(" ",1)[0]):
-                return True
-            line = fp.readline()
-        return False
+    print("Function exist need to be implemented")
 
 #fill list from file
 def get_list(fileName):
-
-    with open(fileName) as fp:
-        line = fp.readline()
-        while line:
-            list.append(line.strip())
-            line = fp.readline()
+    print("Function get_list need to be implemented")
 
 #get random line from list
 def get_random_element():
-    return random.choice(list)
+    if len(list) > 0:
+        return random.choice(list)
+    else:
+        return ""
 
 def list_words():
-    wordType = input("Do you want to list portuguese/english words (Digite 1) or english/portuguese words (Digite 2):")
-    fileName = ""
-    if wordType == "1":
-        fileName = pten_txt
-    if wordType == "2":
-        fileName = enpt_txt
-    get_list(fileName)
-    for word in list:
-        print("=> "+word)
+    print("Function list_words need to be implemented")
 
 def point_count(num):
-    if num > 0:
-       global hits 
-       hits += num
-    if num < 0:
-       global mistakes 
-       mistakes += (-1)*num
+    print("Function point_count need to be implemented")
 
 
 
